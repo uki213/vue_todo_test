@@ -40,7 +40,7 @@ export default new Vuex.Store({
     },
     taskDelete(state, targrtNumber) {
       let taskNumber;
-      this.state.tasks.some((task, index) => {
+      state.tasks.some((task, index) => {
         if (task.taskId === targrtNumber) {
           taskNumber = index;
           return true;
@@ -48,8 +48,11 @@ export default new Vuex.Store({
       });
 
       if (confirm("削除しますか？")) {
-        this.state.tasks.splice(taskNumber, 1);
+        state.tasks.splice(taskNumber, 1);
       }
+    },
+    taskPush(state, task) {
+      state.tasks.push(task);
     }
   },
   actions: {}
