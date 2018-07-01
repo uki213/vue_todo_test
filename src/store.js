@@ -49,7 +49,6 @@ export default new Vuex.Store({
         ];
       }
 
-      console.log(tasks);
       state.tasks = tasks;
     }
   }
