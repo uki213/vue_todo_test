@@ -21,12 +21,15 @@
 export default {
   computed: {
     Tasks() {
+      this.$store.commit("loadStrage");
+
       return this.$store.state.tasks;
     }
   },
   methods: {
     taskDelete(deleteId) {
       this.$store.commit("taskDelete", deleteId);
+      this.$store.commit("saveStrage");
     },
     taskEdit(ID) {
       this.$router.push({

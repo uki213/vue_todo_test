@@ -37,6 +37,7 @@ export default {
         number: this.getTask,
         taskObj: this.getNumber
       });
+      this.$store.commit("saveStrage");
       this.returnHome();
     },
     returnHome() {

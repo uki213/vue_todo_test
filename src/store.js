@@ -6,28 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     testName: "てすと",
-    tasks: [
-      {
-        taskId: 0,
-        taskName: "タスクタイトル00",
-        taskText: "タスク内容00"
-      },
-      {
-        taskId: 1,
-        taskName: "タスクタイトル01",
-        taskText: "タスク内容01"
-      },
-      {
-        taskId: 2,
-        taskName: "タスクタイトル02",
-        taskText: "タスク内容02"
-      },
-      {
-        taskId: 3,
-        taskName: "タスクタイトル03",
-        taskText: "タスク内容03"
-      }
-    ],
+    tasks: [],
     editor: {
       editId: 0,
       defaultTitle: "",
@@ -53,7 +32,25 @@ export default new Vuex.Store({
     },
     taskPush(state, task) {
       state.tasks.push(task);
+    },
+    saveStrage(state) {
+      localStorage.setItem("todo_tasks", JSON.stringify(state.tasks));
+    },
+    loadStrage(state) {
+      let tasks = JSON.parse(localStorage.getItem("todo_tasks"));
+
+      if (!tasks) {
+        tasks = [
+          {
+            taskId: 0,
+            taskName: "例：タスクタイトル",
+            taskText: "例：タスク本文"
+          }
+        ];
+      }
+
+      console.log(tasks);
+      state.tasks = tasks;
     }
-  },
-  actions: {}
+  }
 });
