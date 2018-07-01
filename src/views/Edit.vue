@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="editMode"><Registration /></div>
-    <duv v-else><Editor /></duv>
+    <div v-else><Editor /></div>
   </div>
 </template>
 
