@@ -31,7 +31,14 @@ export default {
     send() {
       let sendTask = Object.assign(this.task);
       sendTask.taskId = Date.now();
-      this.$store.commit("taskPush", sendTask);
+
+      this.$store.commit("taskPush", {
+        taskId: this.task.taskId,
+        taskName: this.task.taskName,
+        taskText: this.task.taskText
+      });
+
+      this.$store.commit("saveStrage");
       this.task = this.default;
     },
     returnHome() {
