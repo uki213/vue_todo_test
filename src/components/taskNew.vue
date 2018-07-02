@@ -14,11 +14,6 @@
 export default {
   data() {
     return {
-      default: {
-        taskId: "",
-        taskName: "",
-        taskText: ""
-      },
       task: {
         taskId: "",
         taskName: "",
@@ -29,17 +24,18 @@ export default {
   computed: {},
   methods: {
     send() {
-      let sendTask = Object.assign(this.task);
-      sendTask.taskId = Date.now();
-
       this.$store.commit("taskPush", {
-        taskId: this.task.taskId,
+        taskId: Date.now(),
         taskName: this.task.taskName,
         taskText: this.task.taskText
       });
 
       this.$store.commit("saveStrage");
-      this.task = this.default;
+      this.task = {
+        taskId: "",
+        taskName: "",
+        taskText: ""
+      };
     },
     returnHome() {
       this.$router.push({ name: "home" });
