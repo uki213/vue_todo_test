@@ -18,6 +18,11 @@ export default {
         taskId: "",
         taskName: "",
         taskText: ""
+      },
+      default: {
+        taskId: "",
+        taskName: "",
+        taskText: ""
       }
     };
   },
@@ -31,11 +36,7 @@ export default {
       });
 
       this.$store.commit("saveStrage");
-      this.task = {
-        taskId: "",
-        taskName: "",
-        taskText: ""
-      };
+      this.task = { ...this.default };
     },
     returnHome() {
       this.$router.push({ name: "home" });
